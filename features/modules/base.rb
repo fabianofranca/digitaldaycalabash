@@ -1,4 +1,3 @@
-puts 'BaseModule'
 
 module BaseModule
     def touch_item(query)

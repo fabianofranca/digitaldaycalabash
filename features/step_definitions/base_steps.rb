@@ -1,9 +1,5 @@
-Dado(/^que estou na tela "([^"]*)"$/) do |page|
+Dado(/^(?:que estou na|sou redirecionado para) tela "([^"]*)"$/) do |page|
   @page = getPage(page)
-end
-
-Dado(/^sou redirecionado para tela "([^"]*)"$/) do |page|
-  step "que estou na tela \"#{page}\""
 end
 
 Quando(/^toco no botão "([^"]*)"$/) do |botao|
