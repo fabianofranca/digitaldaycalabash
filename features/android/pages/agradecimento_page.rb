@@ -1,12 +1,8 @@
 # coding: utf-8
 class AgradecimentoPage < AndroidBasePage
 
-    def self.key
-        "Agradecimento"
-    end
+    key "Agradecimento"
 
-    def trait
-        "* text:'Obrigado!'"
-    end
+    trait "* text:'Obrigado!'"
 
 end

@@ -1,12 +1,8 @@
 # coding: utf-8
 class AgradecimentoPage < IOSBasePage
     
-    def self.key
-        "Agradecimento"
-    end
+    key "Agradecimento"
     
-    def trait
-        "* text:'OBRIGADO!'"
-    end
+    trait "* text:'OBRIGADO!'"
 
 end

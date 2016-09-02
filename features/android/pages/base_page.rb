@@ -4,11 +4,6 @@ require 'calabash-android/abase'
 class AndroidBasePage < Calabash::ABase
     include Page
 
-    def initialize(world, transition_duration=0.5)
-        config if respond_to? :config
-        super(world, transition_duration)
-    end
-
     def set_field(key_or_query, value)
         query = get_element_query(key_or_query)        
         query = key_or_query if query.nil?
@@ -17,5 +12,4 @@ class AndroidBasePage < Calabash::ABase
         hide_soft_keyboard if keyboard_visible?
         wait_for(timeout: 30) { !keyboard_visible? }
     end
-
 end

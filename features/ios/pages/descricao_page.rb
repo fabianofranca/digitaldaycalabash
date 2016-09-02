@@ -1,15 +1,11 @@
 # coding: utf-8
 class DescricaoPage < IOSBasePage
 
-    def self.key
-        "Descrição"
-    end
+    key "Descrição"
     
-    def trait
-        "* text:'INSCREVER-SE'"
-    end
+    trait "* text:'INSCREVER-SE'"
 
-    def config
-        add_element_query "inscrever-se", "* text:'INSCREVER-SE'"    
-    end
+    elements {
+        { "inscrever-se" => "* text:'INSCREVER-SE'" }    
+    }
 end

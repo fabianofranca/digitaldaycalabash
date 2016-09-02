@@ -1,4 +1,4 @@
-Dado(/^(?:que estou na|sou redirecionado para) tela "([^"]*)"$/) do |key|  
+Dado(/^(?:que estou na|sou redirecionado para) tela "([^"]*)"$/) do |key|
   @page = page(Page.get(key)).await()
 end
 

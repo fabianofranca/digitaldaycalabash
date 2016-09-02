@@ -1,18 +1,16 @@
 # coding: utf-8
 class InscricaoPage < IOSBasePage
     
-    def self.key
-        "Inscrição"
-    end
+    key "Inscrição"
 
-    def trait
-        "* text:'ENVIAR'"
-    end
+    trait "* text:'ENVIAR'"
 
-    def config
-        add_element_query "Nome Completo", "* text:'Nome Completo'"
-        add_element_query "e-mail", "* text:'E-mail'"
-        add_element_query "enviar", "* text:'ENVIAR'"
-    end    
+    elements {
+        {
+            "Nome Completo" => "* text:'Nome Completo'",
+            "e-mail" => "* text:'E-mail'",
+            "enviar" => "* text:'ENVIAR'"
+        }
+    }
 
 end

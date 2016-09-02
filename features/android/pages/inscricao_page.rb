@@ -1,18 +1,16 @@
 # coding: utf-8
 class InscricaoPage < AndroidBasePage
     
-    def self.key
-        "Inscrição"
-    end
+    key "Inscrição"
 
-    def trait
-        "* text:'enviar'"
-    end
-
-    def config
-        add_element_query "Nome Completo", "* id:'input_fullname'"
-        add_element_query "e-mail", "* id:'input_email'"
-        add_element_query "enviar", "* text:'enviar'"
-    end
+    trait "* text:'enviar'" 
+    
+    elements {
+        {
+            "Nome Completo" => "* id:'input_fullname'",
+            "e-mail" => "* id:'input_email'",
+            "enviar" => "* text:'enviar'"
+        }
+    }
 
 end
