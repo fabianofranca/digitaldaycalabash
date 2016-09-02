@@ -6,6 +6,7 @@ class AndroidBasePage < Calabash::ABase
 
     def initialize(world, transition_duration=0.5)
         config if respond_to? :config
+        super(world, transition_duration)
     end
 
     def set_field(key_or_query, value)

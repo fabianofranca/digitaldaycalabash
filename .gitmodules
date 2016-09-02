@@ -1,0 +1,6 @@
+[submodule "src/Android"]
+	path = src/Android
+	url = git@github.com:fabianofranca/digitalday.git
+[submodule "src/iOS"]
+	path = src/iOS
+	url = git@github.com:rodrigodias-us/digitalday.git

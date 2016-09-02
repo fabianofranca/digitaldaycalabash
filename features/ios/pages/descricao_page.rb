@@ -9,7 +9,7 @@ class DescricaoPage < IOSBasePage
         "* text:'INSCREVER-SE'"
     end
 
-#    def config
-#        add_element_query "inscrever-se", "* text:'INSCREVER-SE'"    
-#    end
+    def config
+        add_element_query "inscrever-se", "* text:'INSCREVER-SE'"    
+    end
 end
