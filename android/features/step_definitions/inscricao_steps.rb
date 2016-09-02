@@ -13,9 +13,10 @@ Dado(/^sou redirecionado para tela de inscrição$/) do
 end
 
 Dado(/^preencho o campo "([^"]*)" com o valor "([^"]*)"$/) do |campo, valor|
-  touch "* id:'#{getId(campo)}'"
+  touch "* id:'#{campo}'"
   keyboard_enter_text(valor)
   hide_soft_keyboard if keyboard_visible?
+  wait_for(timeout: 30) { !keyboard_visible? }
 end
 
 Então(/^sou redirecionado para tela de agradecimento$/) do
