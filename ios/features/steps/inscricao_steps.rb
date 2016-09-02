@@ -13,7 +13,9 @@ Dado(/^sou redirecionado para tela de inscrição$/) do
 end
 
 Dado(/^preencho o campo "([^"]*)" com o valor "([^"]*)"$/) do |campo, valor|
-  touch "* marked:'#{getId(campo)}'"
+  wait_for(timeout: 5) { element_exists "* text:'#{campo}'" }
+  touch "* text:'#{campo}'"
+  wait_for(timeout: 30) { keyboard_visible? }
   keyboard_enter_text(valor)
 end
 

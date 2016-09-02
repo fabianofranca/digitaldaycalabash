@@ -12,7 +12,7 @@ Funcionalidade: Realizar inscrição no Digital Day
   @inscricao_fluxo_normal
   Cenário: Fluxo nomal de inscrição
     E preencho o campo "Nome Completo" com o valor "Fabiano Franca"
-    E preencho o campo "e-mail" com o valor "email@fabianofranca.com"
+    E preencho o campo "E-mail" com o valor "email@fabianofranca.com"
     Quando toco no botão "ENVIAR"
     Então sou redirecionado para tela de agradecimento
 
@@ -23,14 +23,14 @@ Funcionalidade: Realizar inscrição no Digital Day
     Quando preencho o campo "Nome Completo" com o valor "Fabiano Franca"
     E toco no botão "ENVIAR"
     Então visualizo a mensagem "Informe um e-mail válido"
-    Quando preencho o campo "e-mail" com o valor "email@fabianofranca.com"
+    Quando preencho o campo "E-mail" com o valor "email@fabianofranca.com"
     E toco no botão "ENVIAR"
     Então sou redirecionado para tela de agradecimento
 
   @inscricao_fluxo_normal_esquema
   Esquema do Cenário: Fluxo nomal de inscrição (Esquema)
     E preencho o campo "Nome Completo" com o valor "<Nome>"
-    E preencho o campo "e-mail" com o valor "<Email>"
+    E preencho o campo "E-mail" com o valor "<Email>"
     Quando toco no botão "ENVIAR"
     Então sou redirecionado para tela de agradecimento
 
