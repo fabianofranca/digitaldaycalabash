@@ -1,4 +1,4 @@
-# Digital Day BH 2016
+# Digital Day BH 2016 - Android & iOS
 Exemplo de projeto Calabash para apresentação no Digital Day BH 2016
 
 ### Branches:
