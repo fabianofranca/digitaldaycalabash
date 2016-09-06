@@ -1,8 +1,10 @@
 # coding: utf-8
-class AgradecimentoPage < IOSBasePage
-    
-    key "Agradecimento"
-    
-    trait "* text:'OBRIGADO!'"
+# frozen_string_literal: true
 
+##
+# Esta classe representa a tela de agradecimentos
+class AgradecimentoPage < IOSBasePage
+  key 'Agradecimento'
+
+  trait "* text:'OBRIGADO!'"
 end

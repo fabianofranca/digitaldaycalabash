@@ -1,5 +1,8 @@
+# coding: utf-8
+# frozen_string_literal: true
+
 Dado(/^(?:que estou na|sou redirecionado para) tela "([^"]*)"$/) do |key|
-  @page = page(Page.get(key)).await()
+  @page = page(Page.get(key)).await
 end
 
 Quando(/^toco no botão "([^"]*)"$/) do |botao|
@@ -11,5 +14,5 @@ Dado(/^preencho o campo "([^"]*)" com o valor "([^"]*)"$/) do |campo, valor|
 end
 
 Então(/^visualizo a mensagem "([^"]*)"$/) do |mensagem|
-  @page.has_text mensagem
+  @page.text? mensagem
 end

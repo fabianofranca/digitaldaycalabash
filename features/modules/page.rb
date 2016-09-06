@@ -1,78 +1,70 @@
+# coding: utf-8
+# frozen_string_literal: true
 
+#
+# Este modulo e usado como base para todoas as telas.
+# Ele contem metodos que podem ser utilizados nas duas plataformas
 module Page
-    @@pages =  Hash.new
-    @@base_pages = Array.new
-    @@page_keys =  Hash.new
+  def self.included(base)
+    base.send :include, InstanceMethods
+    base.extend ClassMethods
+  end
 
-    def self.included(base)
-        base.send :include, InstanceMethods
-        base.extend ClassMethods
+  def self.get(key)
+    pages = ObjectSpace.each_object(Class).select { |klass| klass < Page }
 
-        @@base_pages.push base
+    pages.each do |page|
+      return page if (page.respond_to? :key_value) && (page.key_value == key)
+    end
+  end
+
+  #
+  # Modulo com os metodos de classe
+  module ClassMethods
+    def descendants
+      ObjectSpace.each_object(Class).select { |klass| klass < self }
     end
 
-    def self.get(key)
-        if @@pages.length == 0
-            @@base_pages.each do |base|
-                base.descendants.each do |descendant|
-                    k = descendant.name
-                    k = @@page_keys[descendant.name] if @@page_keys.has_key? descendant.name
-                    @@pages[k] = descendant
-                end
-            end
-        end
-
-        @@pages[key]
+    def trait(query)
+      define_method(:trait) { query }
     end
 
-    def self.add_key(name, key)
-        @@page_keys[name] = key
+    def key(value)
+      instance_eval %(
+          def key_value
+            "#{value}"
+          end
+        )
     end
 
-    module ClassMethods
-        def descendants
-            ObjectSpace.each_object(Class).select { |klass| klass < self }
-        end
+    def elements(elements)
+      define_method(:add_elements) { elements }
+    end
+  end
 
-        def trait(query)
-            define_method(:trait) { query }
-        end
-
-        def key(value)            
-            Page.add_key(self.name, value)            
-        end
-
-        def elements(&block)
-            define_method(:add_elements, *block)
-        end
+  #
+  # Modulo com os metodos de instancia
+  module InstanceMethods
+    def initialize(world, transition_duration = 0.5)
+      @elements = {}
+      @elements = add_elements if respond_to? :add_elements
+      super(world, transition_duration)
     end
 
-    module InstanceMethods
-
-        def initialize(world, transition_duration=0.5)
-            if respond_to? :add_elements                
-                @elements = add_elements                  
-            else
-                @elements = Hash.new
-            end
-            
-            super(world, transition_duration)
-        end
-
-        def get_element_query(key)
-            @elements[key] if @elements.has_key? key
-        end
-
-        def touch_item(key_or_query)        
-            if @elements.has_key? key_or_query
-                touch @elements[key_or_query]
-            else
-                touch key_or_query
-            end
-        end
-
-        def has_text(text, timeout = 5)
-            wait_for(timeout: timeout) { element_exists "* marked:'#{text}'" }
-        end
+    def get_element_query(key)
+      @elements[key] if @elements.key? key
     end
+
+    def touch_item(key_or_query)
+      if @elements.key? key_or_query
+        touch @elements[key_or_query]
+      else
+        touch key_or_query
+      end
+    end
+
+    def text?(text, timeout = 5)
+      wait_for(timeout: timeout) { element_exists "* marked:'#{text}'" }
+    end
+  end
 end
