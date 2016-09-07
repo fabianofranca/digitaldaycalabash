@@ -12,7 +12,7 @@ if ENV['DEBUG']
     Pry.commands.alias_command 'f', 'finish'
   end
 
-  Pry::Commands.command /^$/, "repeat last command" do
+  Pry::Commands.command(/^$/, 'repeat last command') do
     _pry_.run_command Pry.history.to_a.last
   end
 end
@@ -29,16 +29,15 @@ end
 root_path = File.expand_path('.', Dir.pwd)
 
 # Carregar classes utilizados em ambas plataformas
-Dir[File.join(root_path, 'features', 'cross_platform', '*.rb')].each do |mod|
-  load mod
+Dir[File.join(root_path, 'cross_platform', '*.rb')].each do |cross_file|
+  load cross_file
 end
 
 # Carregar a page base da plataforma
-pages_path = 'pages/page.rb'
-base_page_path = File.join(root_path, 'features', ENV['PLATFORM'], pages_path)
-load base_page_path
+base_page_file = File.join(root_path, ENV['PLATFORM'], 'page.rb')
+load base_page_file
 
 # Carregar as pages por plataforma
-Dir[File.join(root_path, 'features', ENV['PLATFORM'], 'pages/*.rb')].each do |p|
-  load p if p != base_page_path
+Dir[File.join(root_path, ENV['PLATFORM'], '*.rb')].each do |page_file|
+  load page_file if page_file != base_page_file
 end

@@ -2,16 +2,19 @@
 # frozen_string_literal: true
 
 module Core
-#
-# Este modulo e usado como base para todoas as Pages.
-# Ele contem metodos de classe que podem ser utilizados nas duas plataformas
+  #
+  # Este modulo e usado como base para todoas as Pages.
+  # Ele contem metodos de classe que podem ser utilizados
+  # nas duas plataformas
   module Page
     def self.included(klass)
       klass.extend ClassMethods
-    end 
+    end
 
-    def self.get(key)      
-      pages = ObjectSpace.each_object(Class).select { |klass| klass < Core::Page }
+    def self.get(key)
+      pages = ObjectSpace.each_object(Class).select do |klass|
+        klass < Core::Page
+      end
 
       pages.each do |page|
         return page if (page.respond_to? :key_value) && (page.key_value == key)
@@ -38,6 +41,6 @@ module Core
       end
     end
 
-    #Coloque diretamente no module os metodos de instancia'
+    # Coloque diretamente no module os metodos de instancia'
   end
 end

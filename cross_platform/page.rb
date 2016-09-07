@@ -4,7 +4,8 @@
 module CrossPlatform
   #
   # Este modulo e usado como base para todoas as telas.
-  # Ele contem metodos de instancia que podem ser utilizados nas duas plataformas
+  # Ele contem metodos de instancia que podem ser utilizados
+  # nas duas plataformas
   module Page
     def self.included(klass)
       klass.extend ClassMethods
@@ -15,7 +16,7 @@ module CrossPlatform
     # Modulo com os metodos de classe
     module ClassMethods
     end
-    
+
     def initialize(world, transition_duration = 0.5)
       @elements = {}
       @elements = add_elements if respond_to? :add_elements

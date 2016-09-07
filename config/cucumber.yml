@@ -1,6 +1,6 @@
 # config/cucumber.yml
 ##YAML Template
 ---
-android: PLATFORM=android -r core -r calabash/android/features/support -r features/step_definitions -r features/android/features
+android: PLATFORM=android -r core -r calabash/android/features/support -r step_definitions -r android/features
 
-ios: PLATFORM=ios -r core -r calabash/ios/features/support -r features/step_definitions -r features/ios/features
+ios: PLATFORM=ios -r core -r calabash/ios/features/support -r step_definitions -r ios/features
