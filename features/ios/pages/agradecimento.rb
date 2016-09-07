@@ -3,7 +3,7 @@
 
 ##
 # Esta classe representa a tela de agradecimentos
-class AgradecimentoPage < IOSBasePage
+class AgradecimentoPage < IOS::Page
   key 'Agradecimento'
 
   trait "* text:'OBRIGADO!'"

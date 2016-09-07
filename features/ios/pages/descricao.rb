@@ -3,7 +3,7 @@
 
 ##
 # Esta classe representa a tela de Descricao
-class DescricaoPage < IOSBasePage
+class DescricaoPage < IOS::Page
   key 'Descrição'
 
   trait "* text:'INSCREVER-SE'"

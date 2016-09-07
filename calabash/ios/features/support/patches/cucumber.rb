@@ -1,4 +1,3 @@
-
 # override cucumber pending on the XTC
 if ENV['XAMARIN_TEST_CLOUD'] == '1'
   module Cucumber

@@ -3,7 +3,7 @@
 
 ##
 # Esta classe representa a tela de Descricao
-class DescricaoPage < AndroidBasePage
+class DescricaoPage < Android::Page
   key 'Descrição'
 
   trait "* text:'inscrever-se'"

@@ -3,7 +3,7 @@
 
 ##
 # Esta classe representa a tela de agradecimentos
-class AgradecimentoPage < AndroidBasePage
+class AgradecimentoPage < Android::Page
   key 'Agradecimento'
 
   trait "* text:'Obrigado!'"

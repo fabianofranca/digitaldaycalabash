@@ -3,7 +3,7 @@
 
 ##
 # Esta classe representa a tela de Inscricao
-class InscricaoPage < AndroidBasePage
+class InscricaoPage < Android::Page
   key 'Inscrição'
 
   trait "* text:'enviar'"

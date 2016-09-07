@@ -3,7 +3,7 @@
 
 ##
 # Esta classe representa a tela de Inscricao
-class InscricaoPage < IOSBasePage
+class InscricaoPage < IOS::Page
   key 'Inscrição'
 
   trait "* text:'ENVIAR'"
