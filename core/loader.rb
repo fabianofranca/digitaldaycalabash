@@ -28,16 +28,21 @@ end
 
 root_path = File.expand_path('.', Dir.pwd)
 
+# Carregar os arqivos Core
+Dir[File.join(root_path, 'core', '*.rb')].each do |page_file|  
+  require page_file unless page_file[/loader.rb/, 0] 
+end
+
 # Carregar classes utilizados em ambas plataformas
 Dir[File.join(root_path, 'cross_platform', '*.rb')].each do |cross_file|
-  load cross_file
+  require cross_file
 end
 
 # Carregar a page base da plataforma
 base_page_file = File.join(root_path, ENV['PLATFORM'], 'page.rb')
-load base_page_file
+require base_page_file
 
 # Carregar as pages por plataforma
 Dir[File.join(root_path, ENV['PLATFORM'], '*.rb')].each do |page_file|
-  load page_file if page_file != base_page_file
+  require page_file if page_file != base_page_file
 end
