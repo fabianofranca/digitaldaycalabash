@@ -1,6 +1,8 @@
 # coding: utf-8
 # frozen_string_literal: true
 
+#
+# Este modulo reune as funcionalidades base do projeto
 module Core
   #
   # Este modulo e usado como base para todoas as Pages.
@@ -43,4 +45,15 @@ module Core
 
     # Coloque diretamente no module os metodos de instancia'
   end
+
+  #
+  # Tenta executar um block durante um tempo determinado. Caso o block seja
+  # executado um lambda e disparado, senao nada e feito
+  # rubocop:disable Lint/UselessAssignment, Lint/HandleExceptions
+  def self.try(timeout = DEFAULT_TIMEOUT, test)
+    Core::Platform.current.wait_for(timeout: timeout) { test.call }
+    yield if block_given?
+  rescue Core::Platform::WaitError => ex
+  end
+  # rubocop:enable Lint/UselessAssignment, Lint/HandleExceptions
 end
