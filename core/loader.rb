@@ -29,8 +29,8 @@ end
 root_path = File.expand_path('.', Dir.pwd)
 
 # Carregar os arqivos Core
-Dir[File.join(root_path, 'core', '*.rb')].each do |page_file|  
-  require page_file unless page_file[/loader.rb/, 0] 
+Dir[File.join(root_path, 'core', '*.rb')].each do |page_file|
+  require page_file unless page_file[/loader.rb/, 0]
 end
 
 # Carregar classes utilizados em ambas plataformas
