@@ -4,7 +4,7 @@ Dado(/^que estou na tela de descrição$/) do
   wait_for(timeout: 5) { element_exists "* text:'INSCREVER-SE'" }
 end
 
-Quando(/^toco no botão "([^"]*)"$/) do |botao|
+Quando(/^toco em "([^"]*)"$/) do |botao|
   touch "* text:'#{botao}'"
 end
 
