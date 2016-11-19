@@ -7,6 +7,20 @@ Exemplo de projeto Calabash para apresentação no Digital Day BH 2016
 
 Contém projetos Calabash para cada plataforma.
 
+Para executar os teste de Android:
+
+```
+cd android
+ruby run.rb
+```
+
+Para executar os teste de iOS:
+
+```
+cd ios
+ruby run.rb
+```
+
 ### cross-platform
 
 Um projeto único compartilhando arquivos de feature e steps.
